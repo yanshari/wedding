@@ -1,0 +1,20 @@
+# Ignore JetBrains IDE project files
+.idea/
+
+# Ignore Sass cache and compiled files (if any)
+*.sass-cache
+*.css.map
+
+# Optional: ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Optional: ignore log or temporary files
+*.log
+*.tmp
+
+# Keep your actual website files tracked
+# These are not ignored:
+#   ReadMe.md
+#   index.html, about.html, contact.html, gallery.html, services.html
+#   css/, js/, sass/, images/, fonts/
