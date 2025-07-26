@@ -1,3 +1,74 @@
+
+(function ($) {
+    'use strict';
+
+    // Existing code for other popups might be here
+    // ...
+
+    // Magnific Popup for Gallery
+    $('#fh5co-gallery-list').magnificPopup({
+        delegate: '.image-popup-gallery', // Selector for items inside the parent that triggers the popup
+        type: 'image',
+        gallery: {
+            enabled: true // Enable gallery mode, allowing navigation
+        },
+        image: {
+            titleSrc: 'title' // Will use the 'title' attribute of the <a> tag for the caption
+        },
+        callbacks: {
+            open: function() {
+                // Remove any custom styling added by your theme that might interfere
+                // with the default Magnific Popup padding or sizing if images look off
+                $('body').addClass('mfp-active');
+            },
+            close: function() {
+                $('body').removeClass('mfp-active');
+            }
+        }
+    });
+
+})(jQuery);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ;(function () {
 	
 	'use strict';

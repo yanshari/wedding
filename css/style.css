@@ -10,6 +10,59 @@
 * 	Template Style 
 *
 * ======================================================= */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 body {
   font-family: "Work Sans", Arial, sans-serif;
   font-weight: 400;
@@ -296,11 +349,21 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 .fh5co-cover {
-  height: 900px;
-  background-size: cover;
+  height: 100vh; /* This should make it fill the screen height */
+  background-size: cover; /* <--- THIS IS THE CRUCIAL LINE for full width and height */
   background-repeat: no-repeat;
   position: relative;
-  width: 100%;
+  width: 100%; /* Ensure width is 100% */
+  background-position: center center; /* <--- ADD/CONFIRM THIS for good centering */
+}
+
+.fh5co-cover-background {
+  height: 100vh; /* Make it fill the viewport height */
+  width: 100%; /* Make it fill the viewport width */
+  background-size: cover; /* This will ensure it covers the entire area */
+  background-repeat: no-repeat;
+  background-position: center center; /* Center the image */
+  position: relative; /* Important for positioning overlay and content */
 }
 .fh5co-cover .overlay {
   z-index: 0;
@@ -878,7 +941,7 @@ form label {
 #fh5co-counter .display-tc .btn,
 .fh5co-cover .display-tc .btn {
   padding: 15px 20px;
-  background: #fff !important;
+  background: #f7f7eb !important;
   color: #F14E95;
   border: none !important;
   font-size: 14px;
@@ -942,7 +1005,7 @@ form label {
   display: inline-block;
   width: 100px;
   height: 100px;
-  background: rgba(241, 78, 149, 0.8);
+  background: rgba(123, 20, 24, 0.8);
   margin: 0 4px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
