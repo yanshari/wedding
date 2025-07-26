@@ -1,0 +1,319 @@
+/* --- Full CSS for Elegant Timeline (Matches image_0c7362.jpg and image_0c8266.png) --- */
+
+/* Overall Section Background and Padding */
+#fh5co-couple-story {
+    background-color: #F5F5DC; /* Cream color */
+    padding: 100px 0; /* Adjust overall padding */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Remove the old main title styles */
+/* .wedding-main-title-section { display: none; } */
+/* .timeline-main-title { display: none; } */
+
+
+/* New Wrapper for Left Content & Timeline */
+.wedding-content-wrapper {
+    display: flex;
+    justify-content: center; /* Centers the two columns if they don't fill full width */
+    align-items: flex-start; /* Aligns content to the top of the row */
+}
+
+/* Left Column for Image and Text */
+.wedding-left-content {
+    display: flex; /* Make it a flex container to center its child */
+    flex-direction: column;
+    justify-content: center; /* Vertically center content */
+    align-items: center; /* Horizontally center content */
+    padding-right: 20px; /* Space between left content and timeline */
+    box-sizing: border-box;
+    /* You might need to adjust the width of this column to perfectly align the timeline */
+    /* Example: width: 40%; or flex: 0 0 40%; max-width: 40%; */
+}
+
+.wedding-image-and-text {
+    position: relative; /* For positioning the text overlay on the image */
+    text-align: center; /* Centers inline elements/text within this container */
+    margin-bottom: 20px; /* Space below this block if needed */
+}
+
+.wedding-toasts-img {
+    max-width: 100%; /* Ensure image is responsive */
+    height: auto;
+    display: block; /* Remove extra space below image */
+    margin: 0 auto; /* Center image itself */
+}
+
+.wedding-left-text-overlay {
+    position: absolute; /* Position text relative to the image container */
+    top: 55%; /* Adjust vertically to overlay on the hands/glasses */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center horizontally and vertically */
+    text-align: center;
+    z-index: 10; /* Ensure text is above image */
+    line-height: 0.9; /* Adjust line height for closer text */
+    white-space: nowrap; /* Keep text on one line if possible */
+}
+
+.left-text-primary {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em; /* Adjust size as needed */
+    font-weight: 700;
+    color: #8B0000; /* Dark red */
+    text-transform: uppercase;
+    display: block; /* Ensure it takes full width for centering */
+    line-height: 1; /* Adjust to bring lines closer */
+}
+
+.left-text-secondary {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3em; /* Adjust size as needed, larger for script */
+    color: #8B0000; /* Dark red */
+    display: block;
+    line-height: 1; /* Adjust to bring lines closer */
+    margin-top: 5px; /* Small space between primary and secondary */
+}
+
+
+/* Right Column for Timeline */
+.wedding-timeline-column {
+    display: flex;
+    justify-content: center; /* Center the timeline UL within its column */
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+/* Main Timeline List (UL) - Keep as is from previous version for internal layout */
+.wedding-timeline.elegant-timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    width: 600px; /* Fixed width for the timeline block, adjust as needed */
+    /* This width will determine how far apart the names and times are from the center line */
+}
+
+/* Vertical Line */
+.wedding-timeline.elegant-timeline:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%; /* Perfectly centered vertical line */
+    width: 2px;
+    background-color: #8B0000; /* Dark red line */
+    margin-left: -1px; /* Adjust to perfectly center a 2px line */
+    z-index: 1; /* Ensure line is behind content */
+}
+
+/* Each List Item (LI) */
+.wedding-timeline.elegant-timeline li {
+    position: relative;
+    display: flex;
+    align-items: center; /* Vertically center content with the heart */
+    padding: 25px 0; /* Vertical spacing between items */
+    min-height: 80px; /* Ensure enough height for two lines of text */
+    justify-content: space-between; /* Push left and right items to their respective sides */
+    width: 100%; /* Ensure li takes full width of its parent ul */
+    box-sizing: border-box;
+}
+
+/* Heart Icon (Timeline Point) */
+.wedding-timeline.elegant-timeline .timeline-point {
+    position: absolute;
+    top: 50%;
+    left: 50%; /* Center the heart on the line */
+    width: 20px; /* Size of the heart container */
+    height: 20px;
+    transform: translate(-50%, -50%); /* Precisely center the heart */
+    background-color: #8B0000; /* Color of the heart */
+    z-index: 2; /* Ensure it's above the line */
+
+    /* SVG for heart shape using mask */
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat center center;
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat center center;
+    mask-size: cover; /* Ensure SVG covers the area */
+    background-size: cover; /* Fallback for older browsers for mask-size */
+}
+
+
+/* Left Side (Event Names) Container of Timeline */
+.wedding-timeline.elegant-timeline .timeline-item-left {
+    flex-basis: 50%; /* Occupy left half of the li */
+    text-align: right; /* Align text content to the right, towards the center line */
+    padding-right: 40px; /* Space between text and center line */
+    display: flex;
+    flex-direction: column; /* Stack primary and secondary names */
+    align-items: flex-end; /* Align stacked text to the right */
+    box-sizing: border-box;
+}
+
+.wedding-timeline.elegant-timeline .event-name-primary {
+    font-size: 1.5em; /* Larger size for primary name */
+    font-weight: 700; /* Bold */
+    color: #8B0000;
+    text-transform: uppercase;
+    line-height: 1.2; /* Adjust line height to bring closer to secondary */
+    white-space: nowrap; /* Prevent primary name from wrapping */
+}
+
+.wedding-timeline.elegant-timeline .event-name-secondary {
+    font-family: 'Great Vibes', cursive; /* Script font for secondary name */
+    font-size: 2em; /* Larger size for script font */
+    color: #8B0000;
+    line-height: 0.8; /* Adjust line height to bring closer to primary */
+    margin-top: 5px; /* Small space from primary name */
+    white-space: nowrap; /* Prevent secondary name from wrapping */
+}
+
+/* Right Side (Event Times) Container of Timeline */
+.wedding-timeline.elegant-timeline .timeline-item-right {
+    flex-basis: 50%; /* Occupy right half of the li */
+    text-align: left; /* Align text content to the left, towards the center line */
+    padding-left: 40px; /* Space between text and center line */
+    box-sizing: border-box;
+}
+
+.wedding-timeline.elegant-timeline .event-time {
+    font-size: 1.5em; /* Match primary name size */
+    font-weight: 500;
+    color: #8B0000;
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 991px) { /* Tablets and smaller desktops */
+    /* Stack the left content and timeline vertically */
+    .wedding-content-wrapper {
+        flex-direction: column; /* Stack columns on smaller screens */
+        align-items: center; /* Center stacked content */
+    }
+
+    .wedding-left-content,
+    .wedding-timeline-column {
+        width: 100%; /* Take full width when stacked */
+        padding: 0; /* Remove horizontal padding added by Bootstrap if any */
+        margin-bottom: 40px; /* Space between the stacked sections */
+    }
+
+    .wedding-left-content {
+        order: 1; /* Ensure left content comes first when stacked */
+    }
+
+    .wedding-timeline-column {
+        order: 2; /* Ensure timeline comes second when stacked */
+    }
+
+    .wedding-image-and-text {
+        margin-bottom: 50px; /* More space between image and timeline when stacked */
+    }
+
+    .wedding-left-text-overlay {
+        top: 60%; /* Adjust vertical position for mobile */
+        font-size: 1.8em;
+    }
+
+    .left-text-primary {
+        font-size: 2em;
+    }
+
+    .left-text-secondary {
+        font-size: 2.5em;
+    }
+
+    /* Existing timeline adjustments (might need minor tweaks based on new column structure) */
+    .wedding-timeline.elegant-timeline {
+        width: 90%; /* Adjust width for smaller screens */
+    }
+
+    .wedding-timeline.elegant-timeline .timeline-item-left,
+    .wedding-timeline.elegant-timeline .timeline-item-right {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .wedding-timeline.elegant-timeline .event-name-primary {
+        font-size: 1.3em;
+    }
+
+    .wedding-timeline.elegant-timeline .event-name-secondary {
+        font-size: 1.8em;
+    }
+
+    .wedding-timeline.elegant-timeline .event-time {
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 767px) { /* Mobile devices */
+    /* General Mobile Adjustments (most remain the same from previous version) */
+    .wedding-content-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .wedding-left-content,
+    .wedding-timeline-column {
+        width: 100%;
+        margin-bottom: 30px; /* Adjust spacing */
+    }
+
+    .left-text-primary {
+        font-size: 1.5em; /* Smaller on very small screens */
+    }
+
+    .left-text-secondary {
+        font-size: 2em; /* Smaller on very small screens */
+    }
+
+    .wedding-left-text-overlay {
+        top: 60%; /* Keep overlay position */
+    }
+
+    /* Timeline specific adjustments */
+    .wedding-timeline.elegant-timeline {
+        width: 100%; /* Full width on mobile */
+    }
+
+    .wedding-timeline.elegant-timeline li {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 15px 0;
+    }
+
+    .wedding-timeline.elegant-timeline:before {
+        display: none;
+    }
+
+    .wedding-timeline.elegant-timeline .timeline-point {
+        position: static;
+        margin: 10px 0;
+        left: auto;
+        top: auto;
+        transform: none;
+    }
+
+    .wedding-timeline.elegant-timeline .timeline-item-left,
+    .wedding-timeline.elegant-timeline .timeline-item-right {
+        flex-basis: auto;
+        width: 100%;
+        padding: 0;
+        text-align: center;
+        align-items: center;
+    }
+
+    .wedding-timeline.elegant-timeline .event-name-primary,
+    .wedding-timeline.elegant-timeline .event-name-secondary,
+    .wedding-timeline.elegant-timeline .event-time {
+        font-size: 1.1em;
+        white-space: normal;
+    }
+
+    .wedding-timeline.elegant-timeline .event-name-secondary {
+        line-height: 1.2;
+        margin-top: 2px;
+    }
+}

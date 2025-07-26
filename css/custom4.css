@@ -1,0 +1,78 @@
+
+
+/* --- Block 5: RSVP Confirmation with QR Code --- */
+#fh5co-rsvp-confirm {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 8em 0; /* Adjust vertical padding as desired */
+    min-height: 450px; /* Minimum height for the block */
+    height: auto; /* Allow content to dictate height if it exceeds min-height */
+
+    /* Ensure flex context for vertical centering of .container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#fh5co-rsvp-confirm .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6); /* Darker overlay for better contrast with QR code */
+    z-index: 0;
+}
+
+#fh5co-rsvp-confirm .container {
+    z-index: 1; /* Ensure content is above the overlay */
+    height: 100%; /* Make container take full height of its flex parent for centering */
+    /* Flex properties are handled in HTML via d-flex classes */
+}
+
+#fh5co-rsvp-confirm h2 {
+    font-family: 'Playfair Display', serif; /* Consistent heading font */
+    color: #FFF; /* White text for better contrast */
+    font-size: 3em; /* Adjust as needed */
+    margin-bottom: 0.5em;
+}
+
+#fh5co-rsvp-confirm p {
+    font-family: 'Open Sans', sans-serif; /* Consistent body font */
+    color: #FFF; /* White text */
+    font-size: 1.2em; /* Adjust as needed */
+    margin-bottom: 2em; /* Space below the instruction text */
+}
+
+.qr-code-container {
+    background-color: #FFF; /* White background for the QR code */
+    padding: 15px; /* Padding around the QR code */
+    border-radius: 8px; /* Slightly rounded corners */
+    display: inline-block; /* Shrink to content size and allow text-align: center on parent */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+.qr-code-container img {
+    max-width: 250px; /* Max size for the QR code image */
+    height: auto;
+    display: block; /* Ensure no extra space below image */
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    #fh5co-rsvp-confirm {
+        padding: 6em 0;
+        min-height: 350px;
+    }
+    #fh5co-rsvp-confirm h2 {
+        font-size: 2.2em;
+    }
+    #fh5co-rsvp-confirm p {
+        font-size: 1em;
+    }
+    .qr-code-container img {
+        max-width: 180px; /* Smaller QR code on mobile */
+    }
+}

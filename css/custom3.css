@@ -1,0 +1,76 @@
+/* custom3.css */
+
+/* --- Block 1: Featured Image Section --- */
+#fh5co-featured-image-block {
+    background-color: #EDECE6; /* Complementary background color */
+    padding: 80px 0; /* Vertical padding for the section */
+    position: relative; /* Crucial: This is the positioning context for the full-width red lines */
+    height: 100vh; /* Make it fit the screen height (100% of viewport height) */
+    box-sizing: border-box; /* Include padding in the height calculation, preventing overflow */
+    overflow: hidden; /* Important for containing absolutely positioned elements */
+
+    /* Core centering for the entire block content */
+    display: flex;
+    justify-content: center; /* Horizontally centers its direct child (.container-fluid) */
+    align-items: center; /* Vertically centers its direct child (.container-fluid) */
+}
+
+/* Pseudo-elements for the thick red vertical lines spanning the full width of the block */
+#fh5co-featured-image-block::before,
+#fh5co-featured-image-block::after {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute; /* Position relative to #fh5co-featured-image-block */
+    top: 0; /* Align to the top of the block */
+    width: 20px; /* Thickness of the lines */
+    background-color: #8B0000; /* Deep red color */
+    height: 100%; /* Lines span the full height of the block */
+    z-index: 0; /* Place behind the main content (image, text, etc.) */
+}
+
+#fh5co-featured-image-block::before {
+    left: 0; /* Positions the first line at the far left edge of the block */
+}
+
+#fh5co-featured-image-block::after {
+    right: 0; /* Positions the second line at the far right edge of the block */
+}
+
+
+/* Styles for the Bootstrap column containing the image block (already set up for centering) */
+#fh5co-featured-image-block .col-md-12 {
+    display: flex; /* Makes the column a flex container */
+    justify-content: center; /* Horizontally centers its direct child (.image-with-vertical-lines) */
+    align-items: center; /* Vertically centers its direct child within the column's height */
+    position: relative; /* Acts as a containing block for its children */
+    height: 100%; /* Important for vertical alignment within the parent flex container */
+}
+
+/* Container for the image itself (no longer needs padding for lines) */
+.image-with-vertical-lines {
+    position: relative; /* Keep relative for potential future internal positioning */
+    max-width: 600px; /* Adjust this max-width as needed for your image size */
+    width: 100%; /* Ensures it scales down on smaller screens, up to max-width */
+    height: auto; /* Let content (image) determine height */
+    z-index: 1; /* Ensure this content is above the background lines */
+}
+
+/* The actual image */
+.image-with-vertical-lines .center-image {
+    max-width: 100%; /* Image fills its parent's content area */
+    height: auto; /* Maintains aspect ratio */
+    display: block; /* Prevents extra space below image */
+    margin: 0 auto; /* Centers image horizontally within its parent */
+}
+
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 767px) {
+    /* Main block's height will still be 100vh, padding adjusted as needed by box-sizing */
+    #fh5co-featured-image-block::before,
+    #fh5co-featured-image-block::after {
+        width: 10px; /* Thinner lines on mobile */
+    }
+    .image-with-vertical-lines {
+        max-width: 90%; /* Adjust image container width on mobile */
+    }
+}

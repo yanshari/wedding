@@ -1,0 +1,336 @@
+/* custom2.css */
+
+/* --- Dress Code & Color Palette Section --- */
+#fh5co-dress-code-colors {
+    background-color: #FBFBF2; /* As decided previously */
+    padding: 100px 0;
+    font-family: 'Montserrat', sans-serif;
+    color: #8B0000; /* Set default text color for the block to Dark Red */
+}
+
+/* Dress Code Title */
+.dress-code-title {
+    margin-bottom: 20px;
+    line-height: 1;
+}
+
+.dress-code-the {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5em;
+    display: block;
+    margin-bottom: -0.2em;
+    color: #8B0000; /* Ensure script font is also red */
+}
+
+.dress-code-main {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    display: block;
+    line-height: 1;
+    color: #8B0000; /* Ensure main title is red */
+}
+
+.dress-code-details {
+    font-size: 1.2em;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    color: #8B0000; /* Ensure details text is red */
+}
+
+.dress-code-motto {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #8B0000; /* Ensure motto text is red */
+    max-width: 500px;
+    margin: 0 auto 80px auto;
+}
+
+/* Color Palette Title */
+.color-palette-title {
+    margin-bottom: 40px;
+    line-height: 1;
+}
+
+.color-palette-main {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    display: block;
+    line-height: 1;
+    color: #8B0000; /* Ensure main title is red */
+}
+
+.color-palette-script {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5em;
+    display: block;
+    margin-top: -0.2em;
+    color: #8B0000; /* Ensure script font is also red */
+}
+
+/* Color Swatches - no font color needed here as they are divs */
+.color-swatches {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.color-swatch {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Timeline Custom Styles (from previous custom2.css update) */
+.wedding-content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 80px 0;
+}
+
+.wedding-left-content {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.wedding-image-and-text {
+    position: relative;
+    display: inline-block;
+}
+
+.wedding-toasts-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.wedding-left-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #8B0000; /* Already red, consistent */
+    pointer-events: none;
+    line-height: 1;
+}
+
+.left-text-primary {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: block;
+}
+
+.left-text-secondary {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5em;
+    display: block;
+    margin-top: -0.2em;
+}
+
+/* Timeline Specific Styles */
+.wedding-timeline-column {
+    padding-left: 50px;
+}
+
+.wedding-timeline-content-section {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.elegant-timeline {
+    list-style: none;
+    padding: 0;
+    position: relative;
+    margin: 0;
+}
+
+.elegant-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #8B0000;
+    transform: translateX(-50%);
+}
+
+.elegant-timeline li {
+    position: relative;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.timeline-item-left,
+.timeline-item-right {
+    flex-basis: 45%;
+    text-align: right;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.elegant-timeline li:nth-child(even) .timeline-item-left,
+.elegant-timeline li:nth-child(odd) .timeline-item-right {
+    text-align: left;
+}
+
+.elegant-timeline li:nth-child(odd) .timeline-item-left {
+    order: 1;
+}
+.elegant-timeline li:nth-child(odd) .timeline-item-right {
+    order: 3;
+}
+
+.timeline-point {
+    width: 15px;
+    height: 15px;
+    background-color: #8B0000;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.event-name-primary {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5em;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #8B0000; /* Ensure this is red */
+    display: block;
+    line-height: 1;
+}
+
+.event-name-secondary {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8em;
+    color: #8B0000; /* Ensure this is red */
+    display: block;
+    margin-top: -0.2em;
+}
+
+.event-time {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3em;
+    font-weight: 500;
+    color: #8B0000; /* Ensure this is red */
+    line-height: 1;
+}
+
+/* Responsive adjustments for this new block */
+@media (max-width: 767px) {
+    .dress-code-the {
+        font-size: 2em;
+    }
+    .dress-code-main {
+        font-size: 3em;
+        letter-spacing: 3px;
+    }
+    .dress-code-details {
+        font-size: 1em;
+    }
+    .dress-code-motto {
+        font-size: 0.9em;
+        margin-bottom: 40px;
+    }
+
+    .color-palette-main {
+        font-size: 3em;
+        letter-spacing: 3px;
+    }
+    .color-palette-script {
+        font-size: 2em;
+    }
+    .color-swatch {
+        width: 45px;
+        height: 45px;
+        gap: 10px;
+    }
+
+    /* Responsive adjustments for timeline */
+    .wedding-content-wrapper {
+        padding: 50px 0;
+    }
+    .wedding-left-content {
+        margin-bottom: 30px;
+    }
+    .wedding-left-text-overlay {
+        font-size: 0.8em;
+    }
+    .left-text-primary {
+        font-size: 2.2em;
+        letter-spacing: 2px;
+    }
+    .left-text-secondary {
+        font-size: 1.8em;
+    }
+
+    .wedding-timeline-column {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .elegant-timeline::before {
+        left: 30px;
+        transform: none;
+    }
+    .elegant-timeline li {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        margin-bottom: 30px;
+    }
+
+    .timeline-item-left,
+    .timeline-item-right {
+        flex-basis: auto;
+        text-align: left;
+        padding: 0 0 0 50px;
+    }
+
+    .elegant-timeline li:nth-child(even) .timeline-item-left,
+    .elegant-timeline li:nth-child(odd) .timeline-item-right,
+    .elegant-timeline li:nth-child(odd) .timeline-item-left {
+        text-align: left;
+        order: unset;
+    }
+
+    .timeline-point {
+        left: 30px;
+        transform: none;
+        top: 0;
+    }
+
+    .event-name-primary {
+        font-size: 1.2em;
+    }
+    .event-name-secondary {
+        font-size: 1.5em;
+    }
+    .event-time {
+        font-size: 1.1em;
+        position: absolute;
+        left: 60px;
+        top: 2px;
+    }
+}
