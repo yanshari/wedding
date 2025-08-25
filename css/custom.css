@@ -1,0 +1,127 @@
+/* Gallery Modal Styles */
+.gallery-grid {
+    padding: 32px;
+    background: white;
+    border-radius: 12px;
+    max-width: 1440px;
+    margin: 24px auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(241, 78, 149, 0.2);
+}
+
+.modal-title {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 15px 0;
+    position: relative;
+    border-bottom: 2px solid rgba(241, 78, 149, 0.15);
+}
+
+.modal-title:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background: #F14E95;
+}
+
+.modal-title h2 {
+    color: #F14E95;
+    font-family: "Sacramento", Arial, serif;
+    font-size: 42px;
+    margin: 0;
+    padding: 10px 0;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+}
+
+.gallery-grid-container {
+    padding: 20px;
+    background: rgba(247, 247, 235, 0.3);
+    border-radius: 8px;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+.gallery-grid-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    gap: 24px;
+}
+
+.grid-item {
+    flex: 0 0 32%;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.grid-item img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.grid-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Magnific Popup custom styles */
+.mfp-container {
+    padding: 0 !important;
+}
+
+.mfp-content {
+    max-width: 1600px;
+}
+
+/* Gallery Modal Styles */
+.mfp-with-zoom .mfp-container {
+    padding: 0;
+}
+
+.mfp-with-zoom img.mfp-img {
+    max-height: 100vh !important;
+    padding: 0 !important;
+}
+
+.mfp-with-zoom .mfp-figure:after {
+    display: none;
+}
+
+.mfp-with-zoom .mfp-figure {
+    padding: 20px;
+}
+
+.mfp-with-zoom.mfp-ready .mfp-figure img {
+    transform: scale(1.2);
+    transition: transform 0.3s ease-out;
+}
+
+.mfp-with-zoom.mfp-ready .mfp-figure {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mfp-with-zoom .mfp-figure img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.mfp-with-zoom.mfp-ready.mfp-bg {
+    opacity: 0.9;
+}

@@ -1,35 +1,145 @@
-
 (function ($) {
-    'use strict';
+	'use strict';
 
-    // Existing code for other popups might be here
-    // ...
+	// Initialize gallery popup
+	$('.image-popup-gallery').magnificPopup({
+		type: 'inline',
+		mainClass: 'mfp-with-zoom',
+		items: {
+			src: '#gallery-modal'
+		},
+		callbacks: {
+			open: function() {
+				$('body').addClass('mfp-active');
+			},
+			close: function() {
+				$('body').removeClass('mfp-active');
+			}
+		}
+	});
 
-    // Magnific Popup for Gallery
-    $('#fh5co-gallery-list').magnificPopup({
-        delegate: '.image-popup-gallery', // Selector for items inside the parent that triggers the popup
-        type: 'image',
-        gallery: {
-            enabled: true // Enable gallery mode, allowing navigation
-        },
-        image: {
-            titleSrc: 'title' // Will use the 'title' attribute of the <a> tag for the caption
-        },
-        callbacks: {
-            open: function() {
-                // Remove any custom styling added by your theme that might interfere
-                // with the default Magnific Popup padding or sizing if images look off
-                $('body').addClass('mfp-active');
-            },
-            close: function() {
-                $('body').removeClass('mfp-active');
-            }
-        }
-    });
+	// Handle clicks on grid items
+	$(document).on('click', '.grid-item', function() {
+		var imgSrc = $(this).find('img').attr('src');
+		$.magnificPopup.open({
+			items: {
+				src: imgSrc
+			},
+			type: 'image',
+			closeOnContentClick: true,
+			closeBtnInside: false,
+			mainClass: 'mfp-with-zoom',
+			zoom: {
+				enabled: true,
+				duration: 300
+			}
+		});
+	});
 
 })(jQuery);
 
+// Initialize gallery popup
+$('.image-popup-gallery').magnificPopup({
+	type: 'inline',
+	mainClass: 'mfp-with-zoom',
+	items: {
+		src: '#gallery-modal'
+	},
+	callbacks: {
+		open: function() {
+			$('body').addClass('mfp-active');
+			// Get the title from the clicked element
+			var clickedTitle = $(this.st.el).find('h2').text();
+			// Update the modal title
+			$('.modal-title h2').text(clickedTitle);
 
+			// Get the folder name based on which thumbnail was clicked
+			var folderName = '';
+			switch(clickedTitle) {
+				case 'Two Chubbies':
+					folderName = 'one';
+					break;
+				case 'Disney Sea':
+					folderName = 'two';
+					break;
+				case 'Peace!':
+					folderName = 'three';
+					break;
+				case 'Bears':
+					folderName = 'four';
+					break;
+				case 'Look!':
+					folderName = 'five';
+					break;
+				case 'Woooooo':
+					folderName = 'six';
+					break;
+                case 'And Me':
+                    folderName = 'seven';
+                    break;
+                case 'Flowers and ~!':
+                    folderName = 'eight';
+                    break;
+                case 'Beach':
+                    folderName = 'nine';
+                    break;
+			}
+
+			// Clear existing gallery content
+			$('.gallery-grid-container').empty();
+
+			// Create an array with image numbers (assuming you have numbered your images)
+			// Adjust the range based on how many images you have in each folder
+			const imageCount = 9; // Change this number based on how many images you have
+			const images = Array.from({length: imageCount}, (_, i) => i + 1)
+				.map(num => `images/gallery/modal-gallery/${folderName}/${num}.jpg`);
+
+			// Create grid rows for every 3 images
+			for(let i = 0; i < images.length; i += 3) {
+				let row = $('<div class="gallery-grid-row"></div>');
+
+				// Add up to 3 images in this row
+				for(let j = i; j < Math.min(i + 3, images.length); j++) {
+					// Create image element with error handling
+					const img = new Image();
+					img.src = images[j];
+
+					// Only add the image if it loads successfully
+					img.onload = function() {
+						row.append(`
+                            <div class="grid-item">
+                                <img src="${images[j]}" alt="Gallery Image ${j + 1}">
+                            </div>
+                        `);
+					};
+				}
+
+				$('.gallery-grid-container').append(row);
+			}
+		},
+		close: function() {
+			$('body').removeClass('mfp-active');
+		}
+	}
+});
+
+// Handle clicks on grid items (for image zoom)
+$(document).on('click', '.grid-item', function() {
+	var imgSrc = $(this).find('img').attr('src');
+	$.magnificPopup.open({
+		items: {
+			src: imgSrc
+		},
+		type: 'image',
+		closeOnContentClick: true,
+		closeBtnInside: false,
+		mainClass: 'mfp-with-zoom',
+		zoom: {
+			enabled: true,
+			duration: 300
+		}
+	});
+});
 
 
 
