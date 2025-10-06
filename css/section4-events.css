@@ -1,0 +1,231 @@
+/*
+ * Section 4 (The Wedding Event) Specific Styles - FINAL CLEAN LOOK
+ */
+
+/* =================================== */
+/* Background & Overlay */
+/* =================================== */
+#events {
+    background-image: url('../images/section4/section4_bg.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll; /* Image scrolls normally */
+    position: relative;
+    padding: 5rem 0;
+    color: var(--text-dark);
+}
+
+#events::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7); /* Subtle white overlay */
+    z-index: 1;
+}
+
+#events .container,
+#events .row {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Reusing the small title divider */
+.small-title-divider {
+    position: relative;
+    width: 60px;
+    height: 10px;
+    margin: 10px auto 0;
+}
+.small-title-divider::before,
+.small-title-divider::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 1px solid var(--accent-color);
+    border-radius: 50%;
+    top: 0;
+}
+.small-title-divider::before { left: 10px; }
+.small-title-divider::after { right: 10px; }
+
+
+/* =================================== */
+/* Event Column Styling (Left/Right) */
+/* =================================== */
+.event-card-box {
+    /* Transparent background lets the photo show through */
+    background-color: transparent;
+    padding: 20px 0;
+    height: 100%;
+    text-align: center;
+}
+
+.event-title {
+    font-family: 'Above the Beyond', cursive;
+    font-size: 2.5rem;
+    color: var(--accent-color); /* Burgundy title */
+    margin-bottom: 30px;
+}
+
+/* Time Box - The pill-shaped box */
+.time-box {
+    display: inline-block;
+    background-color: #f8f8f8; /* Light gray background for visibility */
+    border: 1px solid #ddd;
+    color: var(--text-dark);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    padding: 5px 20px;
+    margin-bottom: 25px;
+    border-radius: 50px; /* Pill shape */
+    font-weight: 700;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.venue-name, .venue-address {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.venue-address {
+    margin-bottom: 20px;
+}
+
+.event-details {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    color: #495057 !important;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.map-link {
+    color: var(--text-dark);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.map-link:hover {
+    color: var(--accent-color);
+}
+
+/* =================================== */
+/* CENTER HEART ANIMATION */
+/* =================================== */
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.1); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.1); }
+    60% { transform: scale(1); }
+    100% { transform: scale(1); }
+}
+
+.beating-heart-container {
+    width: 100%;
+    height: 200px; /* Space allowance */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.beating-heart-container::before {
+    content: "\2764"; /* Filled Heart symbol */
+    font-size: 5rem;
+    color: var(--accent-color);
+    opacity: 0.9;
+    animation: heartbeat 2s ease-in-out infinite;
+    display: block;
+    line-height: 1;
+}
+
+
+/* Media Queries */
+@media (max-width: 992px) {
+    .event-card-box {
+        text-align: center;
+    }
+    .col-lg-5 {
+        padding: 0 15px;
+    }
+
+    .beating-heart-container {
+        height: 100px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .beating-heart-container::before {
+        font-size: 3rem;
+    }
+}
+
+/* Re-add Read More style */
+.read-more-link {
+    font-family: 'Playfair Display', serif;
+    color: var(--accent-color);
+    font-style: italic;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.read-more-link:hover {
+    color: var(--accent-light);
+}
+
+
+/* Remove the old map-link styling */
+.map-link {
+    display: none; /* Hiding the old class */
+}
+
+/* =================================== */
+/* NEW: Open Map Button Styling        */
+/* =================================== */
+.map-button-container {
+    margin-top: 20px;
+}
+
+.map-button {
+    display: inline-block;
+    color: var(--text-dark); /* Dark text color */
+    background-color: #f8f8f8; /* Light gray/white background */
+
+    /* Shape and padding */
+    padding: 10px 20px;
+    border-radius: 50px; /* Pill shape */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    /* Text styles */
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.map-button i {
+    color: var(--accent-color); /* Burgundy icon */
+    margin-right: 5px;
+    font-size: 1.1em;
+}
+
+.map-button:hover {
+    background-color: var(--accent-color); /* Burgundy hover */
+    color: white; /* White text on hover */
+    text-decoration: none;
+}
+.map-button:hover i {
+    color: white; /* White icon on hover */
+}

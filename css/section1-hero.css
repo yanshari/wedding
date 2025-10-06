@@ -1,0 +1,208 @@
+/*
+ * Section 1 (Hero) Specific Styles - CLEANED & FINALIZED
+ */
+
+#hero {
+    /* !!! CHECK THIS PATH !!! Assumes section1-hero.css is in /css/ */
+    background-image: url('../../images/section1/section1-bg.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.3);
+    background-blend-mode: lighten;
+}
+
+/* Overlay focused centrally */
+#hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradient focused centrally */
+    background: radial-gradient(circle at 50% 50%,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.4) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* =================================== */
+/* TOP ALIGNMENT NAME BLOCK (Yan & Sha)*/
+/* =================================== */
+.name-block-top {
+    position: relative;
+    display: block;
+    margin-bottom: 2rem;
+}
+
+/* Names Side-by-Side Styling (Yan) */
+.hero-name-primary {
+    display: inline;
+    font-family: 'Above the Beyond', cursive;
+    font-size: 5rem;
+    line-height: 1;
+    color: var(--text-dark);
+    text-shadow: none; /* Crucial for removing the overlay effect */
+    margin: 0 5px;
+}
+
+/* Names Side-by-Side Styling (Sha) */
+.hero-name-secondary {
+    display: inline;
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem; /* Matched size for balance */
+    font-weight: 700;
+    line-height: 1;
+    color: var(--text-dark);
+    text-shadow: none; /* Crucial for removing the overlay effect */
+    margin: 0 5px;
+}
+
+.name-separator {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--text-dark);
+}
+
+.top-name-divider {
+    width: 60px;
+    height: 1px;
+    background-color: var(--accent-color);
+    margin: 10px auto 0;
+    opacity: 0.7;
+}
+
+
+/* Date Text Style */
+.date-text {
+    /* Enlarged the font size from the small .h4 size */
+    font-size: 2.25rem; /* Larger font size */
+    font-weight: 700; /* Made it bold to stand out */
+    color: var(--accent-color); /* Burgundy color for the date */
+    letter-spacing: 2px;
+    margin-top: 40px !important;
+    padding: 0 10px;
+    /* Added a subtle shadow to help it pop like the timer box */
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* =================================== */
+/* Countdown Timer Styling */
+/* =================================== */
+.timer-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Playfair Display', serif;
+    color: var(--text-dark);
+    margin-top: 15px !important;
+
+    /* Boxed look */
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px 15px;
+    border-radius: 4px;
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.timer-segment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2rem;
+    line-height: 1.1;
+    font-weight: 700;
+    color: var(--accent-color); /* Burgundy numbers */
+    margin: 0 5px;
+}
+
+.timer-segment small {
+    font-size: 0.5em;
+    font-weight: 400;
+    color: var(--text-dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 2px;
+}
+
+.timer-separator {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin: 0 5px;
+}
+
+/* =================================== */
+/* Final Divider Below Timer (Small Rings) */
+/* =================================== */
+.final-hero-divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+}
+
+.divider-line-small {
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--accent-color);
+    max-width: 60px;
+    margin: 0 5px;
+    opacity: 0.7;
+}
+
+/* NOTE: We're using the simple double-ring approach here */
+.divider-hearts-small {
+    position: relative;
+    width: 30px;
+    height: 15px;
+    flex-shrink: 0;
+}
+
+.divider-hearts-small::before,
+.divider-hearts-small::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 1px solid var(--accent-color);
+    border-radius: 50%; /* Rings */
+    top: 0;
+    line-height: 1;
+}
+
+.divider-hearts-small::before {
+    left: 0;
+}
+
+.divider-hearts-small::after {
+    left: 8px; /* Overlaps slightly */
+}
+
+
+/* =================================== */
+/* CLEANUP: REMOVE UNUSED/CONFLICTING STYLES */
+/* =================================== */
+
+/* Resetting the old stacked name block styles to prevent conflict */
+.name-block, .heart-graphic {
+    display: none;
+}
+.heart-graphic::before, .heart-graphic::after {
+    content: none;
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+    .hero-name-primary, .hero-name-secondary {
+        font-size: 4rem;
+    }
+    .name-separator {
+        font-size: 2.5rem;
+    }
+}

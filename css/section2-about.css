@@ -1,0 +1,261 @@
+/*
+ * Section 2 (Groom & Bride Intro Card) Specific Styles
+ */
+
+#about {
+    /* Change background from #ffffff to a subtle off-white/cream */
+    background-color: #fcf8f5;
+}
+
+/* Small graphic element below main title */
+.small-title-divider {
+    position: relative;
+    width: 30px;
+    height: 10px;
+    margin: 10px auto 0;
+}
+.small-title-divider::before,
+.small-title-divider::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 1px solid var(--accent-color);
+    border-radius: 50%;
+    top: 0;
+}
+.small-title-divider::before { left: 0; }
+.small-title-divider::after { right: 0; }
+
+
+/* =================================== */
+/* Profile Card (Yan & Sha) Styling    */
+/* =================================== */
+.profile-card {
+    position: relative;
+}
+
+.profile-img-container {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    /* Creates the primary colored border ring */
+    border: 10px solid #f8f8f8;
+    box-shadow: 0 0 0 5px rgba(var(--accent-color), 0.1);
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Diagonal Line Graphic (Groom Side) */
+.profile-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -10%; /* Extends past the column boundary */
+    width: 150px;
+    height: 1px;
+    background-color: #dee2e6;
+    transform: rotate(30deg);
+    z-index: 0;
+    display: none; /* Hide by default, show on large screens */
+}
+
+/* Diagonal Line Graphic (Bride Side) */
+.col-lg-5:nth-child(3) .profile-card::before {
+    left: -10%;
+    right: auto;
+    transform: rotate(-30deg);
+}
+
+@media (min-width: 992px) {
+    .profile-card::before {
+        display: block;
+    }
+}
+
+
+.profile-name {
+    font-family: 'Above the Beyond', cursive;
+    font-size: 2.5rem;
+    color: var(--accent-color); /* Burgundy Name */
+    margin-top: 10px;
+}
+
+.profile-description {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+/* Social Icons */
+.social-icons a {
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    margin: 0 8px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--accent-color);
+}
+
+
+/* =================================== */
+/* Invitation Center Text Styling      */
+/* =================================== */
+.invitation-text {
+    /* Ensure no residual padding/margin is pushing the text off-center */
+    padding: 0;
+    margin: 0;
+}
+
+
+.invitation-title {
+    font-family: 'Above the Beyond', cursive;
+    font-size: 3rem;
+    margin-bottom: 5px;
+    /* Adding subtle spacing to help the script font center better */
+    padding-left: -5px;
+}
+
+.invitation-text > p {
+    font-family: 'Playfair Display', serif;
+}
+
+.invitation-day-placeholder {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.invitation-date {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 5px 0;
+}
+
+.invitation-location {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* RSVP Button */
+.rsvp-btn {
+    background-color: var(--accent-color);
+    color: white;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    padding: 10px 40px;
+    transition: background-color 0.3s;
+    border: none;
+}
+
+.rsvp-btn:hover {
+    background-color: var(--accent-light);
+    color: white;
+}
+
+/* Bottom Divider */
+.bottom-card-divider hr {
+    background-color: #dee2e6;
+    height: 1px;
+    border: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .profile-img-container {
+        width: 180px;
+        height: 180px;
+    }
+    .invitation-text {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+/* =================================== */
+/* NEW: Big Center Heart Styling       */
+/* =================================== */
+/* =================================== */
+/* Big Center Heart Styling (Adjusted for placement) */
+/* =================================== */
+.center-big-heart {
+    position: relative;
+    width: 60px;
+    height: 40px;
+    margin: 10px auto 10px; /* Reduced margin to pull elements closer */
+    z-index: 1;
+}
+
+.center-big-heart::before {
+    content: "\2764"; /* Filled heart symbol */
+    font-size: 3rem; /* Slightly smaller heart for visual balance */
+    color: var(--accent-color);
+    opacity: 0.85;
+    line-height: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/* =================================== */
+/* NEW: Connecting Lines Fix           */
+/* =================================== */
+
+.profile-img-container {
+    /* ... existing styling ... */
+    position: relative; /* Ensure children are positioned relative to this */
+}
+
+/* Line from Yan's side to the Center Heart */
+.col-lg-5:first-child .profile-img-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -10px; /* Start near the image */
+    width: 100px;
+    height: 1px;
+    background-color: #dee2e6;
+    transform: translateY(-50%) translateX(100%) rotate(0deg); /* Straight line */
+    z-index: 0;
+}
+
+/* Line from Sha's side to the Center Heart */
+.col-lg-5:nth-child(3) .profile-img-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -10px; /* Start near the image */
+    width: 100px;
+    height: 1px;
+    background-color: #dee2e6;
+    transform: translateY(-50%) translateX(-100%) rotate(0deg); /* Straight line */
+    z-index: 0;
+}
+
+/* Hide lines on smaller screens */
+@media (max-width: 992px) {
+    .profile-img-container::after {
+        content: none !important;
+    }
+}

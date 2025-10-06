@@ -1,0 +1,36 @@
+# JetBrains IDEs (WebStorm, IntelliJ, PhpStorm, etc.)
+# Contains user-specific settings, configurations, and caches.
+.idea/
+*.iml
+
+# System Files
+# Ignores OS-specific files from macOS, Windows, and Linux.
+.DS_Store
+Thumbs.db
+
+# Dependencies
+# This folder is managed by a package manager (npm, yarn, etc.).
+# It should be reinstalled on each machine rather than committed.
+/node_modules/
+
+# Build & Production Output
+# These folders contain the final, compiled/bundled application files.
+/dist/
+/build/
+/out/
+/.next/
+/.svelte-kit/
+
+# Log files
+# Logs are machine-specific and should not be versioned.
+*.log
+npm-debug.log*
+yarn-error.log
+yarn-debug.log
+
+# Environment Variables
+# These files contain sensitive data like API keys and database credentials.
+# An example file should be committed to show the required variables.
+.env
+.env.*
+!.env.example

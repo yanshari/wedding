@@ -1,0 +1,212 @@
+/*
+ * Section 3 (Our Journey / Timeline) Specific Styles - LIGHT THEME
+ */
+
+/* =================================== */
+/* GLOBAL SECTION 3 STYLES             */
+/* =================================== */
+#story {
+    /* Light background to match other sections */
+    background-color: #ffffff;
+}
+
+.timeline-main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-subtitle {
+    font-family: 'Playfair Display', serif;
+    color: #6c757d;
+}
+
+/* =================================== */
+/* TIMELINE STRUCTURE - POSITIONING FIXES */
+/* =================================== */
+.timeline-container {
+    position: relative;
+    /* INCREASED from 1000px to 1200px to make items wider */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+
+/* The vertical line - Burgundy dashed */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: #dee2e6;
+    background-image: linear-gradient(to bottom,
+    var(--accent-color) 0%,
+    var(--accent-color) 3px,
+    transparent 3px,
+    transparent 15px);
+    background-size: 100% 15px;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+    z-index: 0;
+}
+
+/* Individual Item Positioning */
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 20px 0;
+    z-index: 1;
+}
+
+/* *** FIX 1: Missing Left/Right Alignment Rules *** */
+/* Left side items: Aligned to the left half */
+.timeline-item.left {
+    padding-right: 50px;
+    left: 0; /* Crucial: Keeps the box on the left side */
+}
+
+/* Right side items: Aligned to the right half */
+.timeline-item.right {
+    padding-left: 50px;
+    left: 50%; /* Crucial: Pushes the box to the right side */
+}
+/* ********************************************* */
+
+
+/* Timeline Content Box (The Card) */
+.timeline-content {
+    display: flex;
+    background-color: #f8f9fa;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+    overflow: hidden;
+    padding: 10px;
+}
+
+/* Image Box Styling */
+.timeline-photo-box {
+    /* INCREASED from 40% to 50% width of the card */
+    width: 50%;
+    flex-shrink: 0;
+    overflow: hidden;
+
+    /* REMOVED: min-height: 200px; - Let height be determined by uniform content */
+}
+
+.timeline-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 18px;
+}
+
+/* Text Box Styling */
+.timeline-text-box {
+    /* DECREASED from 60% to 50% width of the card */
+    width: 50%;
+    padding: 10px 20px;
+    color: var(--text-dark);
+}
+.timeline-text-box p {
+    font-size: 0.9rem;
+    color: #495057;
+    line-height: 1.5;
+}
+
+/* Date/Title/Subtitle Styles */
+.timeline-date {
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    margin-bottom: 5px;
+}
+
+.story-title {
+    font-family: 'Above the Beyond', cursive;
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: 0;
+}
+
+.story-subtitle {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-top: -5px;
+    margin-bottom: 15px;
+}
+
+/* The Diamond Dot Marker */
+.timeline-dot {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: var(--accent-color);
+    border: none;
+    transform: translateY(-50%) rotate(45deg);
+    border-radius: 2px;
+    top: 50%;
+    z-index: 2;
+    box-shadow: 0 0 0 4px #ffffff;
+}
+
+/* Dot position for left items */
+.timeline-item.left .timeline-dot {
+    right: -8px;
+}
+
+/* Dot position for right items */
+.timeline-item.right .timeline-dot {
+    left: -8px;
+}
+.last-item .timeline-dot {
+    background-color: var(--accent-color);
+    box-shadow: 0 0 0 4px #ffffff;
+}
+
+
+/* =================================== */
+/* RESPONSIVENESS (Mobile View) */
+/* =================================== */
+@media (max-width: 768px) {
+    /* Move vertical line to the left edge */
+    .timeline-container::before {
+        left: 20px;
+    }
+
+    /* Make all items full width and left aligned */
+    .timeline-item, .timeline-item.right {
+        width: 100%;
+        left: 0;
+        padding-left: 50px;
+        padding-right: 15px;
+    }
+
+    /* Move all dots to the left line */
+    .timeline-item .timeline-dot,
+    .timeline-item.right .timeline-dot {
+        left: 17px !important;
+        right: auto;
+        top: 0;
+        transform: translateY(10px) rotate(45deg); /* Keep rotation */
+    }
+
+    /* Stack image and text vertically on mobile */
+    .timeline-content {
+        flex-direction: column;
+    }
+
+    /* Ensure image is at the bottom for right-aligned items on mobile */
+    .timeline-item.right .timeline-content {
+        flex-direction: column-reverse;
+    }
+
+    /* Text padding adjustment for mobile */
+    .timeline-photo-box, .timeline-text-box {
+        width: 100%;
+        padding: 10px 5px;
+    }
+}
