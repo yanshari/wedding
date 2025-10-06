@@ -4,7 +4,7 @@
 
 #hero {
     /* !!! CHECK THIS PATH !!! Assumes section1-hero.css is in /css/ */
-    background-image: url('../../images/section1/section1-bg.jpg');
+    background-image: url('../images/section1/section1-bg.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
