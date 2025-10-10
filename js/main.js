@@ -1,3 +1,12 @@
+simplyCountdown('.simply-countdown-one', {
+    year: 2025,
+    month: 11,
+    day: 11,
+    hours: 14,
+    minutes: 0,
+    seconds: 0,
+    enableUtc: false
+});
 // Isolated init for prenup lightbox
 (function ($) {
 	$(function () {

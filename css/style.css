@@ -12,7 +12,7 @@
 * ======================================================= */
 
 .custom-h {
-    font-size: 3em !important;  /* adjust: between h1 and h2 */
+    font-size: 2em !important;  /* adjust: between h1 and h2 */
     line-height: 1.2;   /* optional tighter spacing */
 }
 
