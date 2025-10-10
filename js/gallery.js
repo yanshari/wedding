@@ -30,7 +30,7 @@
             //     close: function () {
             //         $.magnificPopup.open({
             //             items: {
-            //                 src: '#gallery-modal'
+            //                 src: '#memories-modal'
             //             },
             //             type: 'inline',
             //             mainClass: 'mfp-with-zoom'
@@ -42,12 +42,12 @@
 
 })(jQuery);
 
-// Initialize gallery popup
-$('.image-popup-gallery').magnificPopup({
+// Initialize memories popup
+$('.image-popup-memories').magnificPopup({
     type: 'inline',
     mainClass: 'mfp-with-zoom',
     items: {
-        src: '#gallery-modal'
+        src: '#memories-modal'
     },
     callbacks: {
         open: function () {
@@ -71,8 +71,8 @@ $('.image-popup-gallery').magnificPopup({
                 case 'Beach': folderName = 'nine'; break;
             }
 
-            // Clear existing gallery content
-            $('.gallery-grid-container').empty();
+            // Clear existing memories content
+            $('.memories-grid-container').empty();
 
             const imageCount = 8; // Change based on how many images you have
             const images = Array.from({ length: imageCount }, (_, i) => i + 1)
@@ -82,7 +82,7 @@ $('.image-popup-gallery').magnificPopup({
                 const img = new Image();
                 img.src = src;
                 img.onload = function () {
-                    $('.gallery-grid-container').append(`
+                    $('.memories-grid-container').append(`
             <div class="grid-item">
               <img src="${src}" alt="Gallery Image ${idx + 1}">
             </div>

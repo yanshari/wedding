@@ -1,0 +1,123 @@
+:root {
+    --bg-color: #FBF9F7;
+    --card-bg-color: #FFFFFF;
+    --primary-text-color: #3D3D3D;
+    --secondary-text-color: #7A7A7A;
+    --accent-color: #D4AF7A; /* A soft, elegant gold */
+    --border-color: #EAEAEA;
+    --font-heading: 'Sacramento', cursive;
+    --font-body: 'Inter', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    /* Added a background image to showcase the transparency. Replace with your own. */
+    background-image: url(https://images.unsplash.com/photo-1525923838299-2312b6952825?q=80&w=2070&auto=format&fit=crop);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    color: var(--primary-text-color);
+    margin: 0;
+    padding: 0;
+}
+
+.guestbook-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 40px;
+    /* Added transparency and a blur effect */
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.guestbook-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.guestbook-header h2 {
+    font-family: var(--font-heading);
+    font-size: 8rem;
+    color: var(--primary-text-color);
+    margin: 0 0 10px;
+    font-weight: 400;
+}
+
+.guestbook-header p {
+    font-size: 2rem;
+    color: var(--secondary-text-color);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* The main area is now a single centered column */
+.guestbook-main {
+    max-width: 800px; /* Increased width to use more of the box */
+    margin: 0 auto; /* Centers the form horizontally */
+}
+
+/* Form Styling */
+.form-section h3 {
+    font-size: 1.8rem; /* Increased size */
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-align: center;
+}
+.form-input {
+    width: 100%;
+    padding: 16px; /* Increased padding for larger text */
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 2.1rem; /* Made the input text bigger */
+    font-family: var(--font-body);
+    background-color: #F9F9F9;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.form-input::placeholder {
+    color: #AAAAAA;
+}
+.form-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(212, 175, 122, 0.2);
+}
+textarea.form-input {
+    resize: vertical;
+    min-height: 140px; /* Increased default height */
+}
+.submit-btn {
+    width: 100%;
+    padding: 16px; /* Increased padding */
+    border: none;
+    border-radius: 10px;
+    background-color: var(--accent-color);
+    color: white;
+    font-size: 2.1rem; /* Increased button text size */
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.submit-btn:hover {
+    background-color: #c8a06b;
+    transform: translateY(-2px);
+}
+#form-status {
+    text-align: center;
+    margin-top: 15px;
+    height: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .guestbook-container {
+        padding: 20px;
+    }
+    .guestbook-header h2 {
+        font-size: 3rem;
+    }
+}

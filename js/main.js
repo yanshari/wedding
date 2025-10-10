@@ -1,4 +1,14 @@
-
+// Isolated init for prenup lightbox
+(function ($) {
+	$(function () {
+		$('.prenup-section .prenup-popup').magnificPopup({
+			type: 'image',
+			gallery: {enabled: true},
+			mainClass: 'mfp-fade prenup-mfp',
+			removalDelay: 200
+		});
+	});
+})(jQuery);
 
 ;(function () {
 

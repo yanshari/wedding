@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Messages</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Sacramento&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FBF9F7;
+            --card-bg-color: #FFFFFF;
+            --primary-text-color: #3D3D3D;
+            --secondary-text-color: #7A7A7A;
+            --accent-color: #D4AF7A;
+            --border-color: #EAEAEA;
+            --font-heading: 'Sacramento', cursive;
+            --font-body: 'Inter', sans-serif;
+        }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--primary-text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            width: 100%;
+            margin: 40px auto;
+        }
+        .header { text-align: center; margin-bottom: 40px; position: relative; }
+        .header h1 { font-family: var(--font-heading); font-size: 4rem; margin: 0; }
+        #login-section, #messages-section {
+            background-color: var(--card-bg-color);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+        .form-input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background-color: var(--accent-color);
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        #logout-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            background-color: var(--border-color);
+            color: var(--secondary-text-color);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        #login-error { color: red; text-align: center; margin-top: 10px; }
+        .message-card {
+            background-color: var(--card-bg-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+        .message-card h3 { margin: 0 0 10px; font-size: 1.25rem; color: var(--accent-color); }
+        .message-card p { margin: 0 0 15px; line-height: 1.6; }
+        .message-card .timestamp { font-size: 0.8rem; color: var(--secondary-text-color); text-align: right; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Login form, shown by default -->
+    <div id="login-section">
+        <div class="header">
+            <h1>Admin Login</h1>
+        </div>
+        <form id="login-form">
+            <input type="email" id="email" class="form-input" placeholder="Email" required>
+            <input type="password" id="password" class="form-input" placeholder="Password" required>
+            <button type="submit" class="submit-btn">Login</button>
+            <p id="login-error"></p>
+        </form>
+    </div>
+
+    <!-- Messages section, hidden by default -->
+    <div id="messages-section" style="display: none;">
+        <div class="header">
+            <h1>Guest Messages</h1>
+            <button id="logout-btn">Logout</button>
+        </div>
+        <div id="messages-list"></div>
+    </div>
+</div>
+
+<script type="module">
+    // --- IMPORTANT: PASTE YOUR FIREBASE CONFIGURATION HERE ---
+    const firebaseConfig = {
+        apiKey: "AIzaSyC_DmaKkzUBA7ewTRfHQpus3JtWkUj5EbA",
+        authDomain: "softymatcha-8dcaa.firebaseapp.com",
+        projectId: "softymatcha-8dcaa",
+        storageBucket: "softymatcha-8dcaa.firebasestorage.app",
+        messagingSenderId: "843459835041",
+        appId: "1:843459835041:web:8660c2ddb583f5e0ac6ce0",
+        measurementId: "G-5Q72VMPCP0"
+    };
+    // ---------------------------------------------------------
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, collection, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const loginSection = document.getElementById('login-section');
+    const messagesSection = document.getElementById('messages-section');
+    const loginForm = document.getElementById('login-form');
+    const loginError = document.getElementById('login-error');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // User is signed in.
+            loginSection.style.display = 'none';
+            messagesSection.style.display = 'block';
+            fetchMessages();
+        } else {
+            // User is signed out.
+            loginSection.style.display = 'block';
+            messagesSection.style.display = 'none';
+        }
+    });
+
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        loginError.textContent = '';
+
+        signInWithEmailAndPassword(auth, email, password)
+            .catch((error) => {
+                loginError.textContent = "Login failed. Please check your email and password.";
+                console.error("Login Error:", error);
+            });
+    });
+
+    // --- NEW ---
+    // Add a click listener to the logout button
+    logoutBtn.addEventListener('click', () => {
+        signOut(auth).catch((error) => {
+            console.error("Logout Error:", error);
+        });
+    });
+
+    function fetchMessages() {
+        const messagesList = document.getElementById('messages-list');
+        messagesList.innerHTML = "<p>Loading messages...</p>";
+        const messagesQuery = query(collection(db, "messages"), orderBy("timestamp", "desc"));
+
+        onSnapshot(messagesQuery, (querySnapshot) => {
+            if (querySnapshot.empty) {
+                messagesList.innerHTML = "<p>No messages yet.</p>";
+                return;
+            }
+            messagesList.innerHTML = "";
+            querySnapshot.forEach((doc) => {
+                const message = doc.data();
+                const messageCard = document.createElement('div');
+                messageCard.className = 'message-card';
+                const date = message.timestamp ? message.timestamp.toDate().toLocaleString() : 'Just now';
+                messageCard.innerHTML = `
+                        <h3>From: ${message.name}</h3>
+                        <p>${message.text}</p>
+                        <div class="timestamp">${date}</div>
+                    `;
+                messagesList.appendChild(messageCard);
+            });
+        }, (error) => {
+            console.error("Error fetching messages:", error);
+            messagesList.innerHTML = `<p style="color:red;">Error: You don't have permission to view these messages. Check your Firebase security rules.</p>`;
+        });
+    }
+</script>
+</body>
+</html>
+

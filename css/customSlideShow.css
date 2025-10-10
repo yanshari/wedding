@@ -1,0 +1,228 @@
+/* ===========================
+   Custom Slideshow CSS
+   =========================== */
+
+/* Scoped variables */
+.slideshow {
+  --bg:#0f1724;
+  --card:#0b1220;
+  --accent:#7c3aed;
+  --muted:#94a3b8;
+  --glass: rgba(255,255,255,0.04);
+}
+
+/* Wrapper */
+#customSlideShow {
+    width: 90%; /* <--- FIX: Use 90% of the screen width */
+    max-width: 1400px; /* Optional: Put a realistic cap on huge screens */
+    margin: 20px auto; /* <--- FIX: Center the 90% width block */
+}
+
+/* Slideshow container */
+/*#customSlideShow .slideshow {*/
+/*  width: 130%;        !* changed from 100% / max-width *!*/
+/*  max-width: 2000px;   !* optional, remove the 1200px limit *!*/
+/*  background: #fff;*/
+/*  border-radius: 1rem;*/
+/*  box-shadow: 0 4px 20px rgba(0,0,0,0.15);*/
+/*  overflow: hidden;*/
+
+/*  display: grid;*/
+/*  grid-template-columns: 1fr 160px; !* left viewer, right thumbnails *!*/
+/*  gap: 16px;*/
+/*  align-items: start;*/
+/*  padding: 18px;*/
+/*}*/
+/* Slideshow container */
+#customSlideShow .slideshow {
+    /* Inherits 100% of its parent (#customSlideShow), which is now 90% of the screen. */
+    width: 100%;
+    /* The rest of your styles are fine */
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    overflow: hidden;
+
+    /* Grid layout for viewer/thumbnails */
+    display: grid;
+    grid-template-columns: 1fr 160px; /* left viewer, right thumbnails */
+    gap: 16px;
+    align-items: start;
+    padding: 18px;
+}
+
+/* Main viewer */
+.slideshow .viewer {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--card);
+  padding: 0;
+  height: 100%; /* take full height of grid row */
+}
+
+/* Slides area with fixed ratio for equal height */
+.slideshow .slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;  /* keeps nice ratio */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slideshow .slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .45s ease, transform .45s cubic-bezier(.2,.9,.3,1);
+}
+
+.slideshow .slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* keeps full image inside */
+  border-radius: 12px;
+}
+
+/* Caption */
+.slideshow .caption {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.slideshow .caption .text {
+  background: var(--glass);
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--muted);
+  backdrop-filter: blur(6px);
+}
+
+/* Controls */
+.slideshow .control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform .15s ease;
+}
+.slideshow .control:active { transform: translateY(-50%) scale(.96); }
+.slideshow .control[aria-hidden="true"] { display: none; }
+.slideshow .prev { left: 12px; }
+.slideshow .next { right: 12px; }
+.slideshow .control svg { width: 18px; height: 18px; fill: none; stroke: var(--accent); stroke-width: 2; }
+
+/* Right column: thumbnails */
+.slideshow .thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 700px; /* or whatever you want */
+  overflow-y: auto;
+  align-items: stretch;
+  padding-right: 4px;
+}
+
+
+.slideshow .thumb {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: transparent;
+}
+
+.slideshow .thumb img {
+  width: 96px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.slideshow .thumb .meta { font-size: 13px; color: var(--muted); }
+.slideshow .thumb.active {
+  outline: 2px solid rgba(124,58,237,0.16);
+  background: linear-gradient(90deg, rgba(124,58,237,0.04), transparent);
+}
+
+/* Footer row */
+.slideshow .controls-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  align-items: center;
+}
+.slideshow .btn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.04);
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--muted);
+  cursor: pointer;
+}
+.slideshow .counter { font-size: 13px; color: var(--muted); }
+
+/* Responsive */
+@media (max-width: 880px) {
+  #customSlideShow .slideshow {
+    max-width: 1200px;
+    width: 100%;
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: 1fr 160px;
+    gap: 16px;
+    align-items: stretch;   /* make both columns same height */
+    padding: 18px;
+  }
+  .slideshow .thumbs {
+    flex-direction: row;
+    overflow: auto;
+    padding-bottom: 6px;
+    max-height: none;
+  }
+  .slideshow .thumb { min-width: 120px; }
+  .slideshow .slides { aspect-ratio: 4 / 3; } /* slightly taller on mobile */
+}
+
+
+
+/* Prevent tiny overflow */
+html, body {
+  overflow-x: hidden !important;
+}
+
+/* Remove tap highlight on mobile */
+a, button, .slideshow button, .slideshow a, .slideshow img {
+  -webkit-tap-highlight-color: transparent;
+}
